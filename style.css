@@ -47,7 +47,7 @@
   }
   
   .game-grid {
-    background: #0DA192;
+    background: #3279a8;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
