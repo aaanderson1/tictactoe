@@ -7,20 +7,16 @@ const cellDivs = document.querySelectorAll('.game-cell');
 const xSymbol = '×';
 const oSymbol = '○';
 
-
-
-
 //game variables
 let gameIsLive = true;
 let xIsNext = true;
-let winner = null;
 
 //functions
 const letterToSymbol = (letter) => letter == 'x' ? xSymbol : oSymbol;
+
 const handleWin = (letter) => {
     gameIsLive = false;
-    winner = letter;
-    if (winner === 'x') {
+    if (letter === 'x') {
         statusDiv.innerHTML = `${letterToSymbol(winner)} has won!`;
     } else {
         statusDiv.innerHTML = `<span>
@@ -31,33 +27,57 @@ const handleWin = (letter) => {
 
     //functions
     const checkGameStatus = () => {
-        const topLeft = cellDivs[0].classList[2];
-        const topMiddle = cellDivs[1].classList[2];
-        const topRight = cellDivs[2].classList[2];
-        const middleLeft = cellDivs[3].classList[2];
-        const middleMiddle = cellDivs[4].classList[2];
-        const middleRight = cellDivs[5].classList[2];
-        const bottomLeft = cellDivs[6].classList[2];
-        const bottomMiddle = cellDivs[7].classList[2];
-        const bottomRight = cellDivs[8].classList[2];
+        const topLeft = cellDivs[0].classList[1];
+        const topMiddle = cellDivs[1].classList[1];
+        const topRight = cellDivs[2].classList[1];
+        const middleLeft = cellDivs[3].classList[1];
+        const middleMiddle = cellDivs[4].classList[1];
+        const middleRight = cellDivs[5].classList[1];
+        const bottomLeft = cellDivs[6].classList[1];
+        const bottomMiddle = cellDivs[7].classList[1];
+        const bottomRight = cellDivs[8].classList[1];
 
         //check winner
         if (topLeft && topLeft === topMiddle && topLeft === topRight) {
             handleWin(topLeft);
+            cellDivs[0].classList.add('won');
+            cellDivs[1].classList.add('won');
+            cellDivs[2].classList.add('won');
         } else if (middleLeft && middleLeft === middleMiddle && middleLeft === middleRight) {
             handleWin(middleLeft);
+            cellDivs[3].classList.add('won');
+            cellDivs[4].classList.add('won');
+            cellDivs[5].classList.add('won');
         } else if (bottomLeft && bottomLeft === bottomMiddle && bottomLeft === bottomRight) {
             handleWin(bottomLeft);
+            cellDivs[6].classList.add('won');
+            cellDivs[7].classList.add('won');
+            cellDivs[8].classList.add('won');
         } else if (topLeft && topLeft === middleLeft && topLeft === bottomMiddle) {
             handleWin(topLeft);
+            cellDivs[0].classList.add('won');
+            cellDivs[3].classList.add('won');
+            cellDivs[6].classList.add('won');
         } else if (topMiddle && topMiddle === middleMiddle && topMiddle === bottomMiddle) {
             handleWin(topMiddle);
+            cellDivs[1].classList.add('won');
+            cellDivs[4].classList.add('won');
+            cellDivs[7].classList.add('won');
         } else if (topRight && topRight === middleRight && topRight === bottomRight) {
             handleWin(topRight);
+            cellDivs[2].classList.add('won');
+            cellDivs[5].classList.add('won');
+            cellDivs[8].classList.add('won');
         } else if (topLeft && topLeft === middleMiddle && topLeft === bottomRight) {
-            handlewin(topLeft);           
+            handlewin(topLeft);
+            cellDivs[0].classList.add('won');
+            cellDivs[4].classList.add('won');
+            cellDivs[8].classList.add('won');           
         } else if (topRight && topRight === middleMiddle && topRight === topRight) {
             handleWin(topRight); 
+            cellDivs[2].classList.add('won');
+            cellDivs[4].classList.add('won');
+            cellDivs[6].classList.add('won');
         } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomRight) {
             gameIsLive = false;
             statusDiv.innerHTML = 'Game is tied';
@@ -65,9 +85,9 @@ const handleWin = (letter) => {
             xIsNext = !xIsNext;
         }
         if (xIsNext) {
-            statusDiv.innerHTML = `$(xSymbol) is next`;
+            statusDiv.innerHTML = `${xSymbol} is next`;
         } else {
-         statusDiv.innerHTML = `<span>$(xSymbol) is next </span>`;
+         statusDiv.innerHTML = `<span>${oSymbol} is next </span>`;
         }
     }
 };
