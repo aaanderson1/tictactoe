@@ -49,14 +49,25 @@ const handleWin = (letter) => {
             handleWin(middleLeft);
         } else if (bottomLeft && bottomLeft === bottomMiddle && bottomLeft === bottomRight) {
             handleWin(bottomLeft);
-        } else if (topLeft && topLeft === middleLeft && topMiddle === bottomMiddle) {
+        } else if (topLeft && topLeft === middleLeft && topLeft === bottomMiddle) {
             handleWin(topLeft);
         } else if (topMiddle && topMiddle === middleMiddle && topMiddle === bottomMiddle) {
             handleWin(topMiddle);
         } else if (topRight && topRight === middleRight && topRight === bottomRight) {
             handleWin(topRight);
-        } else if (topRight && topRight === middleRight && middleRight === topRight)
-            handleWin(bottomLeft);
+        } else if (topLeft && topLeft === middleMiddle && topLeft === bottomRight) {
+            handlewin(topLeft);           
+        } else if (topRight && topRight === middleMiddle && topRight === topRight) {
+            handleWin(topRight); 
+        } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomRight) {
+            gameIsLive = false;
+            statusDiv.innerHTML = 'Game is tied'; {
+        } else {
+            xIsNext = !xIsNext;
+        if (xIsNext) {
+            statusDiv.innerHTML = `$(xSymbol) is next`;
+        } else {
+         statusDiv.innerHTML = `<span>$(xSymbol) is next </span>`;
     }
     }
 };
