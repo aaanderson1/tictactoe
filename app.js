@@ -95,30 +95,28 @@ const handleWin = (letter) => {
 //event Handlers
 const handleReset = (e) => {
     xIsNext = true;
-    statusDiv.innerHTML = `$(xSymbol) is next`;
-    for(const callDiv of callDivs) {
-        callDiv.classList.remove('x');
-        callDiv.classList.remove('o');
-
+    statusDiv.innerHTML = `${xSymbol} is next`;
+    for(const cellDiv of cellDivs) {
+    cellDiv.classList.remove('x');
+    cellDiv.classList.remove('o');
+    cellDiv.classList.remove('won');
     }
+    gameIsLive = true;
 };
 
 const handleCellClick = (e) => {
     const classList = e.target.classList;
-    const location = classList[1];
 
-    if (classList[2] == 'x' || classList[2] == 'o') {
-        return;
-    }
+if (!gameIsLive || classList[1] === 'x' || classList[1] === 'o') {
+    return;
+}
 
     if (xIsNext) {
-
-        e.target.classList.add('×');
-        xIsNext = !xIsNext;
+       classList.add('x'); 
+       checkGameStatus();
     } else {
-        e.target.classList.add('o')
-        xIsNext = !xIsNext;
-
+        classList.add('o');
+        checkGameStatus();
     }
 };
 
@@ -127,5 +125,5 @@ resetDiv.addEventListener('click', handleReset);
 
 for (const cellDiv of cellDivs) {
     cellDiv.addEventListener('click', handleCellClick)
-};
+}
 
