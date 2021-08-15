@@ -87,13 +87,13 @@ const handleWin = (letter) => {
         if (xIsNext) {
             statusDiv.innerHTML = `${xSymbol} is next`;
         } else {
-         statusDiv.innerHTML = `<span>${oSymbol} is next </span>`;
+         statusDiv.innerHTML = `<span>${oSymbol} is next</span>`;
         }
     }
 };
 
 //event Handlers
-const handleReset = (e) => {
+const handleReset = () => {
     xIsNext = true;
     statusDiv.innerHTML = `${xSymbol} is next`;
     for(const cellDiv of cellDivs) {
@@ -126,4 +126,3 @@ resetDiv.addEventListener('click', handleReset);
 for (const cellDiv of cellDivs) {
     cellDiv.addEventListener('click', handleCellClick)
 }
-
