@@ -71,12 +71,12 @@
   }
   
   .x::after {
-    content: '×';
+    content: 'x';
     font-size: 200px;
   }
   
   .o::after {
-    content: '○';
+    content: 'o';
     color: #F2EBD3;
     font-size: 225px;
   }

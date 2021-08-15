@@ -4,8 +4,8 @@ const resetDiv = document.querySelector('.reset');
 const cellDivs = document.querySelectorAll('.game-cell');
 
 //game constants
-const xSymbol = '×';
-const oSymbol = '○';
+const xSymbol = 'x';
+const oSymbol = 'o';
 
 //game variables
 let gameIsLive = true;
@@ -17,13 +17,11 @@ const letterToSymbol = (letter) => letter == 'x' ? xSymbol : oSymbol;
 const handleWin = (letter) => {
     gameIsLive = false;
     if (letter === 'x') {
-        statusDiv.innerHTML = `${letterToSymbol(winner)} has won!`;
+        statusDiv.innerHTML = `${letterToSymbol(letter)} has won!`;
     } else {
-        statusDiv.innerHTML = `<span>
-        ${letterToSymbol(winner)} has won!
-        </span>`;
+        statusDiv.innerHTML = `<span>${letterToSymbol(letter)} has won!</span>`;
     }
-
+};
 
     //functions
     const checkGameStatus = () => {
@@ -80,10 +78,9 @@ const handleWin = (letter) => {
             cellDivs[6].classList.add('won');
         } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomRight) {
             gameIsLive = false;
-            statusDiv.innerHTML = 'Game is tied';
+            statusDiv.innerHTML = 'Game is tied!';
         } else {
             xIsNext = !xIsNext;
-        }
         if (xIsNext) {
             statusDiv.innerHTML = `${xSymbol} is next`;
         } else {
