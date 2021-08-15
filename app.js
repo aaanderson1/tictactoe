@@ -4,8 +4,8 @@ const resetDiv = document.querySelector('.reset');
 const cellDivs = document.querySelectorAll('.game-cell');
 
 //game constants
-const xSymbol = 'x';
-const oSymbol = 'o';
+const xSymbol = '×';
+const oSymbol = '○';
 
 //game variables
 let gameIsLive = true;
