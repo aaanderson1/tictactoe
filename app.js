@@ -3,6 +3,12 @@ const statusDiv = document.querySelector('.status');
 const reserDiv = document.querySelector('.reset');
 cont cellDivs = document.querySelectorAll('.game-cell');
 
+//game constants
+const xSymbol = '×';
+const oSymbol = '○';
+
+
+
 
 //game variables
 let gameIsLive = true;
@@ -11,22 +17,29 @@ let xIsNext = true;
 let winner = null;
 
 //functions
-const checkGameStatus = () => {
-    const topLeft = cellDivs[0].classList[1];
-    const topMiddle = cellDivs[1].classList[1];
-    const topRight = cellDivs[2].classList[1];
-    const middleLeft = cellDivs[3].classList[1];
-    const middleMiddle = cellDivs[4].classList[1];
-    const middleRight = cellDivs[5].classList[1];
-    const bottomLeft = cellDivs[6].classList[1];
-    const bottomMiddle = cellDivs[7].classList[1];
-    const bottomRight = cellDivs[8].classList[1];
+const letterToSymbol = (letter) => letter == 'x' ? xSymbol : oSymbol;
 
-//is there a winner?
-if(topLeft && topLeft == topMiddle && topLeft == topRight) {
+//functions
+const checkGameStatus = () => {
+    const topLeft = cellDivs[0].classList[2];
+    const topMiddle = cellDivs[1].classList[2];
+    const topRight = cellDivs[2].classList[2];
+    const middleLeft = cellDivs[3].classList[2];
+    const middleMiddle = cellDivs[4].classList[2];
+    const middleRight = cellDivs[5].classList[2];
+    const bottomLeft = cellDivs[6].classList[2];
+    const bottomMiddle = cellDivs[7].classList[2];
+    const bottomRight = cellDivs[8].classList[2];
+
+//check winner
+if(topLeft && topLeft === topMiddle && topLeft === topRight) {
     gameIsLive = false;
     winner = topLeft;
-    statusDiv.innerHTML = `${topLeft} has won!`;
+    if (topLeft === 'x') {
+statusDiv.innerHTML = `${letterToSymbol(topLeft)} has won!`;
+} else {
+    statusDiv.innerHTML = `<span>${letterToSymbol({topLeft)} has won!`;
+    }
 }
 };
 
